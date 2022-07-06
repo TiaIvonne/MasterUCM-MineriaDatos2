@@ -3,7 +3,7 @@ title: "Práctica I"
 description: |
   Análisis de componentes principales
 author:
-  - name: Ivonne Yañez Mendoza (No DNI, no resido en Espania)
+  - name: Ivonne Yañez Mendoza (No DNI)
     affiliation: Universidad Complutense de Madrid
     affiliation_url: 
 date: "`r Sys.Date()`"

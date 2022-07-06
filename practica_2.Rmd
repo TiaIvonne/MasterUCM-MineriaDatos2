@@ -93,11 +93,11 @@ Algunas de las variables son:
 prov <- provincias %>% select(-Prov)
 cov_mat <- cov(prov)
 
-correlaciones <-  prov %>% correlate(diagonal = 1) 
+cor_mat <-  prov %>% correlate(diagonal = 1) 
 #grafico
 corrplot(cor(prov), type = "upper", tl.col = "black")
 
-
+cor_mat
 ```
 
 # Ejercicio 2:
@@ -117,15 +117,27 @@ provincias_std
 
 ```{r eval = TRUE}
 # Completa el código
-eigen(cov_mat)
+eigen(cor_mat %>% select(-term))
 ```
 
 # Ejercicio 4:
 
 > Haciendo uso de `PCA()` del paquete `{FactoMineR}` calcula todas las componentes principales. Repite de nuevo el análisis con el mínimo número de componentes necesairas para capturar al menos el 95% de la información de los datos.
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 # Completa el código
+# PCA con todo
+provincias_full <- provincias %>% select(-Prov)
+provincias_fit <-
+  PCA(provincias_full, scale.unit = TRUE, ncp = ncol(provincias_full), graph = FALSE)
+provincias_fit$eig
+
+#Solo con 7 componentes
+provincias_fit <-
+  PCA(provincias_full, scale.unit = TRUE, ncp = 7, graph = FALSE)
+
+provincias_fit$var$contrib
+
 ```
 
 
